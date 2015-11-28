@@ -15,12 +15,12 @@ function mainController($scope, $http) {
             console.log('Error: ' + data);
         });
 
-    // when submitting the add form, send the text to the node API
+
     $scope.createTodo = function() {
         $http.post('/weeklyTodos', $scope.formData)
             .success(function(data) {
                 console.log(data);
-                $scope.formData = {}; // clear the form so our user is ready to enter another
+                $scope.formData = {}; // clear the bind
                 $scope.todos = data;
             })
             .error(function(data, status) {

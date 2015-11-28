@@ -6,18 +6,25 @@ body {
   padding-top:50px;
 }
 
+/*make vert paper line*/
 .container{
   border-left: 2px solid red;
   height: 2000px;
+  background: #fcfcff;
 }
 #todo-list {
   margin-bottom:30px;
 }
-
+/*make hor paper line*/
 hr {
   margin: .25rem;
   width: 200%;
 }
 .center-text {
   text-align: center;
+}
+.header{
+  background: #345;
+  color: #fff;
+  text-shadow: 2px 2px #aa3345;
 }
