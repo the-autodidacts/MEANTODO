@@ -18,7 +18,7 @@ body {
 /*make hor paper line*/
 hr {
   margin: .25rem;
-  width: 200%;
+  width: 100%;
 }
 .center-text {
   text-align: center;
