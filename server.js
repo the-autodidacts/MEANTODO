@@ -10,7 +10,7 @@ var express             = require('express'),
     methodOverride      = require('method-override'),
     mongoose            = require('mongoose'),
     morgan              = require('morgan'),
-    todoController      = require('./controllers/todos.js');
+    WeeklyTodo          = require('./models/weeklyTodo.js');
 
 
 ///////////Server Set UP and Use Defaults///////////////
@@ -23,9 +23,11 @@ server.use(express.static('./public'));
 server.use(expressEjsLayouts);
 server.use(parser.urlencoded({ extended: true }));
 server.use(parser.json());                                     // parse application/json for angular and ajax calls
-server.use(parser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
-server.use('/todos', todoController);
+server.use(parser.json({ type: 'application/json' })); // parse application/vnd.api+json as json
 
+// router
+todoController      = require('./controllers/weeklyTodos.js');
+server.use('/weeklyTodos', todoController);
 
 
 server.get('', function(req, res) {

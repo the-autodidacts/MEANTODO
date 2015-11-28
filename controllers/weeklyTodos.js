@@ -1,13 +1,18 @@
 var express    = require('express'),
     router     = express.Router(),
-    Todo       = require('../models/todo.js'),
+    server     = express(),
+    weeklyTodo = require('../models/weeklyTodo.js'),
+
+
+
+/////////////////Just the Date ///////////////////////////
     date       = new Date(),
     month      = date.getMonth() + 1,
     day        = date.getDate().toString(),
     year       = date.getFullYear().toString(),
     dateString = month.toString() + "/" + day + "/" + year;
-
-//All Purpose LOGGER
+////////////////////////////////////////////////////////////
+////////////// All Purpose LOGGER//////////////////////////
 router.use(function (req, res, next) {
   console.log("============Todo Routes==============");
   console.log("REQ DOT BODY", req.body);
@@ -16,26 +21,28 @@ router.use(function (req, res, next) {
   next();
 });
 
-///////////////Routes/////////////////////////
-//the get route to get all todos
-router.get('/todos', function(req,res){
-  //Passing in todos to find
-  Todo.find(function(err, todos){
+/////////////////////////Routes////////////////////////////
+
+//the get route to get all weeklyTodos
+router.get('/', function(req,res){
+  // Passing in todos to find
+  weeklyTodo.find(function(err, todos){
       if (err)
           res.send(err)
       res.json(todos); //renders json
   });
 });
 
-router.post('/todos', function (req, res){
-  Todo.create({
-      text: req.body.text,
+////Create a new weeklyTodo
+router.post('/', function (req, res){
+  weeklyTodo.create({
+      todo: req.body.text,
       done: false
   }, function (err, todos) {
       if (err)
         res.send(err);
 
-      Todo.find(function(err, todos){
+      weeklyTodo.find(function(err, todos){
           if (err)
               res.send(err)
           res.json(todos); //renders json
@@ -43,15 +50,15 @@ router.post('/todos', function (req, res){
     });
 });
 
-
-router.delete('/todos/:todo_id', function(req, res) {
-    Todo.remove({
+//////DELETE A weeklyTodo///
+router.delete('/:todo_id', function(req, res) {
+    weeklyTodo.remove({
         _id : req.params.todo_id
     }, function(err, todo) {
         if (err)
             res.send(err);
 
-        Todo.find(function(err, todos) {
+        weeklyTodo.find(function(err, todos) {
             if (err)
                 res.send(err)
             res.json(todos);
