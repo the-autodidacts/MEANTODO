@@ -4,12 +4,20 @@ html {
 }
 body {
   padding-top:50px;
-  background-image: url('paper.jpg');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+}
+
+.container{
+  border-left: 2px solid red;
+  height: 2000px;
 }
 #todo-list {
   margin-bottom:30px;
+}
+
+hr {
+  margin: .25rem;
+  width: 200%;
+}
+.center-text {
+  text-align: center;
 }

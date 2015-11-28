@@ -7,7 +7,7 @@
 
     <title>MEAN TODO</title>
 
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
     <link rel="stylesheet" href="custom.css" charset="utf-8">
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
@@ -20,52 +20,35 @@
     <div class="container">
 
         <!-- HEADER AND TODO COUNT -->
-        <div class="jumbotron text-center">
+        <div class="twelve columns center-text">
             <h1>To Do <span class="label label-info">{{ todos.length }}</span></h1>
         </div>
 
         <!-- TODO LIST -->
         <div id="todo-list" class="row">
-            <div class="col-sm-4 col-sm-offset-4">
+            <div class="twelve columns">
 
                 <!-- LOOP OVER THE TODOS IN $scope.todos -->
                 <div class="checkbox" ng-repeat="todo in todos">
                     <label>
                         <input type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.todo }}
-                    </label>
-
-                    <!-- FORM TO CREATE DAILY TODOS -->
-                    <div id="todo-form" class="row">
-                        <div class="col-sm-8 col-sm-offset-2 text-center">
-                            <form>
-                                <div class="form-group">
-
-                                    <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                                    <input type="text" class="form-control input-lg text-center" placeholder="Enter Weekly Todo." ng-model="formData.text">
-                                </div>
-
-                                <!-- createToDo() WILL CREATE NEW TODOS -->
-                                <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
-                            </form>
-                        </div>
-                    </div>
+                    </label><hr>
                 </div>
-
             </div>
         </div>
 
         <!-- FORM TO CREATE WEEKLY TODOS -->
         <div id="todo-form" class="row">
-            <div class="col-sm-8 col-sm-offset-2 text-center">
+            <div class="twelve columns center-text">
                 <form>
                     <div class="form-group">
 
                         <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                        <input type="text" class="form-control input-lg text-center" placeholder="Enter Weekly Todo." ng-model="formData.text">
+                        <input type="text" class="twelve columns" placeholder="Enter Your Todo." ng-model="formData.text">
                     </div>
 
                     <!-- createToDo() WILL CREATE NEW TODOS -->
-                    <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+                    <button type="submit" class="button-primary" ng-click="createTodo()">Add</button>
                 </form>
             </div>
         </div>

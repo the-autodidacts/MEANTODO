@@ -4,8 +4,8 @@ var express             = require('express'),
     MONGOURI            = process.env.MONGOLAB_URI || "mongodb://localhost:27017",
     DBNAME              = 'angularTodo',
     parser              = require('body-parser'),
-    ejs                 = require('ejs'),
-    expressEjsLayouts   = require('express-ejs-layouts'),
+    ejs                 = require('ejs'), //Angular is taking care of this **redundant**
+    expressEjsLayouts   = require('express-ejs-layouts'),//angular
     session             = require('express-session'),
     methodOverride      = require('method-override'),
     mongoose            = require('mongoose'),
@@ -18,12 +18,12 @@ server.set('views', './views');
 server.set('view engine', 'ejs');
 
 server.use(methodOverride('_method'));
-server.use(morgan('dev'));
+server.use(morgan('dev')); //Logger
 server.use(express.static('./public'));
-server.use(expressEjsLayouts);
+server.use(expressEjsLayouts);//No used removed before pushing to prod
 server.use(parser.urlencoded({ extended: true }));
-server.use(parser.json());                                     // parse application/json for angular and ajax calls
-server.use(parser.json({ type: 'application/json' })); // parse application/vnd.api+json as json
+server.use(parser.json());
+server.use(parser.json({ type: 'application/json' }));
 
 // router
 todoController      = require('./controllers/weeklyTodos.js');
